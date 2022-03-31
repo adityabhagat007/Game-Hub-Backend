@@ -17,6 +17,6 @@ module.exports = {
     "no-import-assign": 2,
     "no-const-assign": 2,
     "new-cap": 0,
-    "semi": 0,
+    semi: 0,
   },
 };
