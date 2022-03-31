@@ -3,7 +3,6 @@ import {
   ErrorRequestHandler,
   Request,
   Response,
-  NextFunction,
 } from "express";
 import { validationResult } from "express-validator";
 import config from "../config/config";

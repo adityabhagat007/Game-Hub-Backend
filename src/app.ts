@@ -11,6 +11,7 @@ import path from "node:path";
 import { globalErrorHandler } from "./utils/errorHandler";
 
 import testApis from "./apis/testApi";
+import sequelizeConnection from "./utils/db-connection"
 
 // app  and middleware
 const app = express();
@@ -72,7 +73,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/test", testApis);
 
-// EROOR HANDLING MIDDLEWARE
+// ERROR HANDLING MIDDLEWARE
 app.use(globalErrorHandler);
 
 // 404 MIDDLEWARE
@@ -81,5 +82,7 @@ app.use((req, res, next) => {
     message: "resourse not found",
   });
 });
+
+sequelizeConnection;
 
 export default app;

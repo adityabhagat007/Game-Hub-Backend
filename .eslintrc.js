@@ -12,11 +12,11 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "no-var": 2,
-    indent: 0,
     "no-console": 1,
     "no-duplicate-imports": 2,
     "no-import-assign": 2,
     "no-const-assign": 2,
-    semi: 0,
+    "new-cap": 0,
+    "semi": 0,
   },
 };
