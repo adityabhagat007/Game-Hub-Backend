@@ -5,8 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && node build/server.js",
+    "postinstall": "tsc",
+    "build": "tsc && node dist/server.js",
     "start": "nodemon ./src/server.ts",
+    "watch-mode": "nodemon dist/server.js",
     "dev": "SET NODE_ENV=dev & nodemon --watch src/**/* -e ts,json --exec node --inspect -r ts-node/register ./src/server.ts",
     "start:prod": "SET NODE_ENV=prod & npm run build",
     "lint": "eslint . --ext .ts",

@@ -17,8 +17,12 @@ config/config.env
 # /coverage
 
 # # production
-# /build
 
+/build
+
+/dist
+
+dist/
 # # misc
 # .DS_Store
 # .env
