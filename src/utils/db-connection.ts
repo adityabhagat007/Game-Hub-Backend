@@ -10,7 +10,7 @@ const DB_DIALECT = config.Dialect as Dialect;
 const sequelizeConnection = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
   dialect: DB_DIALECT,
-  ssl: true,
+  logging: false,
   pool: {
     max: 5,
     min: 0,

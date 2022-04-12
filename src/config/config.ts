@@ -1,12 +1,10 @@
 import dotenv from "dotenv";
-import path from "node:path";
+// import path from "node:path";
 import ConfigData from "../types/configData.js";
 import configDev from "./config.dev";
 import configProd from "./config.prod";
 
-dotenv.config({
-  path: path.join(__dirname, `config.${process.env.NODE_ENV?.trim()}.env`),
-});
+dotenv.config();
 // console.log(
 //    "ENV file path --> ",
 //    path.join(__dirname, `config.${process.env.NODE_ENV.trim()}.env`)

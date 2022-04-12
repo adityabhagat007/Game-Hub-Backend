@@ -8,8 +8,6 @@ process.on("uncaughtException", (err) => {
 
 import app from "./app";
 
-// const DB = config.DB_URL.replace('<password>', config.DB_PASSWORD);
-
 // DB connection
 
 const port = process.env.PORT || config.PORT || 8080;

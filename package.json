@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "tsc",
-    "build": "node dist/server.js",
-    "start": "nodemon ./src/server.ts",
+    "postinstall": "npm run build",
+    "build": "tsc",
+    "start": "node dist/server.js",
     "watch-mode": "nodemon dist/server.js",
     "dev": "SET NODE_ENV=dev & nodemon --watch src/**/* -e ts,json --exec node --inspect -r ts-node/register ./src/server.ts",
     "start:prod": "SET NODE_ENV=prod & npm run build",

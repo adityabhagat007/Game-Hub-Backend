@@ -36,4 +36,7 @@ dist/
 # yarn-debug.log*
 # yarn-error.log*
 
-# *.env
+.env.dev
+.env.prod
+.env
+ *env
