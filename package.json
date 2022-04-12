@@ -1,12 +1,12 @@
 {
-  "name": "backend-template",
+  "name": "Gamehub_backend",
   "version": "1.0.0",
   "description": "the gaming hub backend",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "tsc",
-    "build": "tsc && node dist/server.js",
+    "build": "node dist/server.js",
     "start": "nodemon ./src/server.ts",
     "watch-mode": "nodemon dist/server.js",
     "dev": "SET NODE_ENV=dev & nodemon --watch src/**/* -e ts,json --exec node --inspect -r ts-node/register ./src/server.ts",
@@ -19,6 +19,9 @@
     "format": "prettier --write .",
     "test-all": "npm run check-format && npm run check-lint && npm run check-types",
     "prepare": "husky install"
+  },
+  "engines": {
+    "node": "16.13.2"
   },
   "keywords": [
     "the gaming hub"
