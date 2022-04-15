@@ -11,7 +11,7 @@ import path from "node:path";
 import { globalErrorHandler } from "./utils/errorHandler";
 
 import testApis from "./apis/testApi";
-import sequelizeConnection from "./utils/db-connection";
+// import sequelizeConnection from "./utils/db-connection";
 
 // app  and middleware
 const app = express();
@@ -83,6 +83,6 @@ app.use((req, res, next) => {
   });
 });
 
-sequelizeConnection;
+// sequelizeConnection;
 
 export default app;

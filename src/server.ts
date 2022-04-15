@@ -1,4 +1,7 @@
 import config from "./config/config";
+import {PrismaClient} from "@prisma/client"
+
+
 
 process.on("uncaughtException", (err) => {
   console.log("UNCAUGHT EXCEPTION! 💥 Shutting down...");
@@ -9,6 +12,21 @@ process.on("uncaughtException", (err) => {
 import app from "./app";
 
 // DB connection
+const prisma = new PrismaClient({
+  errorFormat: 'pretty',
+  rejectOnNotFound: true,
+  log: ['query', 'info', 'warn'],
+})
+
+prisma
+  .$connect()
+  .then(() => {
+    // eslint-disable-next-line no-console
+    console.log('DB connected successfully!');
+  })
+  // eslint-disable-next-line no-console
+  .catch((err: Error) => console.log(err));
+
 
 const port = process.env.PORT || config.PORT || 8080;
 const server = app.listen(port, () => {
