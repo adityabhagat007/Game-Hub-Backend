@@ -11,6 +11,7 @@ import path from "node:path";
 import { globalErrorHandler } from "./utils/errorHandler";
 
 import testApis from "./apis/testApi";
+
 // import sequelizeConnection from "./utils/db-connection";
 
 // app  and middleware

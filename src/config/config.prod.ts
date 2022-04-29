@@ -8,6 +8,8 @@ const configProd: ConfigData = {
   HOST: process.env.PROD_HOST,
   PORT: process.env.PROD_PORT,
   Dialect: "postgres",
+  EMAIL: process.env.PROD_EMAIL,
+  PASSWORD: process.env.PROD_PASSWORD,
   DB_NAME: process.env.PROD_DB_NAME || "",
   DB_USER: process.env.PROD_DB_USER || "",
   DB_PORT: process.env.PROD_DB_PORT || "",

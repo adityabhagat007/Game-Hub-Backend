@@ -8,6 +8,8 @@ const configDev: ConfigData = {
   HOST: process.env.DEV_HOST,
   PORT: process.env.DEV_PORT,
   Dialect: "postgres",
+  EMAIL: process.env.DEV_EMAIL,
+  PASSWORD: process.env.DEV_PASSWORD,
   DB_NAME: process.env.DEV_DB_NAME || "",
   DB_USER: process.env.DEV_DB_USER || "",
   DB_PORT: process.env.DEV_DB_PORT || "",
