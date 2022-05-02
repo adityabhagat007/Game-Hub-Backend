@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DEV_DB_URL")
+}
+
+model HostingDetails {
+  id   String @id @unique @default(uuid())
+  user User?
+  hostingdetails Tournament @relation(fields: [tournamentId] , references: [id])
+  tournamentId String
+  @@map("hosting_details")
+}
+
+model GamingDetails {
+  id   String @id @unique @default(uuid())
+  user User?
+  gamingdetails Tournament @relation(fields: [tournamentId] , references: [id])
+  tournamentId String
+  @@map("gaming_details")
+}
+
+model User {
+  id              String          @id @unique @default(uuid())
+  touranment      Tournament[]
+  name            String
+  username        String
+  email           String          @unique
+  number          String?
+  password        String
+  otp             String?
+  expTime         DateTime?
+  hostingDetails  HostingDetails? @relation(fields: [hostingDetailId], references: [id])
+  hostingDetailId String?         @unique
+  gamingDetails   GamingDetails?  @relation(fields: [gamingDetailId], references: [id])
+  gamingDetailId  String?         @unique
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  isDeleted       Boolean         @default(false)
+
+  @@map("users")
+}
+
+model Tournament {
+  id                    String   @id @unique @default(uuid())
+  host                  User     @relation(fields: [userId], references: [id])
+  hostingDetail         HostingDetails?
+  gamingDetail          GamingDetails?
+  userId                String
+  tournamentName        String
+  registrationStartDate DateTime
+  registrationEndDate   DateTime
+  competitionStartDate  DateTime
+  competitionEndDate    DateTime
+  description           String
+}

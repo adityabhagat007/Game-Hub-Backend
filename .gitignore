@@ -17,8 +17,12 @@ config/config.env
 # /coverage
 
 # # production
-# /build
 
+/build
+
+/dist
+
+dist/
 # # misc
 # .DS_Store
 # .env
@@ -32,4 +36,7 @@ config/config.env
 # yarn-debug.log*
 # yarn-error.log*
 
-# *.env
+.env.dev
+.env.prod
+.env
+ *env
