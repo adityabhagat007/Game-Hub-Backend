@@ -18,9 +18,26 @@ interface signupObj {
 export const userSignup: RequestHandler = async (req, res, next) => {
   try {
     const { name, username, password, email, number } = req.body as signupObj;
+    const sameUsername = await user.findUnique({
+      where: { username: username },
+    });
+    if (sameUsername) {
+      return res.status(400).json({
+        status: false,
+        message: "Username already taken",
+        data: "",
+      });
+    }
+    const sameEmail = await user.findUnique({ where: { email: email } });
+    if (sameEmail) {
+      return res.status(400).json({
+        status: false,
+        message: "Email is already register",
+        data: "",
+      });
+    }
 
     const body = {} as signupObj;
-
     body.name = name;
     body.username = username;
     const hashPassword = await bcryptjs.hash(password, 12);
@@ -61,7 +78,7 @@ export const userSignup: RequestHandler = async (req, res, next) => {
 
     res.status(200).json({
       status: false,
-      message: "User created successfully",
+      message: "Please check your email for OTP",
       data: userCreation,
     });
   } catch (err) {

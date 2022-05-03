@@ -11,6 +11,7 @@ import path from "node:path";
 import { globalErrorHandler } from "./utils/errorHandler";
 
 import testApis from "./apis/testApi";
+import authApis from "./apis/authapis";
 
 // import sequelizeConnection from "./utils/db-connection";
 
@@ -73,6 +74,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/v1/test", testApis);
+app.use("/api/v1/auth", authApis);
 
 // ERROR HANDLING MIDDLEWARE
 app.use(globalErrorHandler);

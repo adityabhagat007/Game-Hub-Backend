@@ -7,9 +7,10 @@ const router = Router();
 router.post(
   "/signup",
   [
-    body("name").not().isEmpty().withMessage("Name is required"),
-    body("username").not().isEmpty().withMessage("Username is required"),
-    body("email").not().isEmpty().withMessage("Email is required"),
+    body("name").notEmpty().withMessage("Name is required"),
+    body("username").notEmpty().withMessage("Username is required"),
+    body("email").notEmpty().withMessage("Email is required"),
+    body("password").isStrongPassword().withMessage("Password is required"),
   ],
   userSignup
 );

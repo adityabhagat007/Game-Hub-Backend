@@ -1,7 +1,5 @@
-import { customAlphabet } from "nanoid";
-
 const genOtp = (): string => {
-  const otp = String(customAlphabet("0123456789", 6));
+  const otp = String(Math.floor(100000 + Math.random() * 900000));
   return otp;
 };
 
