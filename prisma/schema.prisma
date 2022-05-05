@@ -11,18 +11,24 @@ datasource db {
 }
 
 model HostingDetails {
-  id   String @id @unique @default(uuid())
-  user User?
-  hostingdetails Tournament @relation(fields: [tournamentId] , references: [id])
-  tournamentId String
+  id                      String       @id @unique @default(uuid())
+  user                    User?
+  hostedTournamentDetails Tournament[]
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  isDeleted       Boolean         @default(false)
   @@map("hosting_details")
 }
 
 model GamingDetails {
-  id   String @id @unique @default(uuid())
-  user User?
-  gamingdetails Tournament @relation(fields: [tournamentId] , references: [id])
-  tournamentId String
+  id            String     @id @unique @default(uuid())
+  user          User?
+  gamingdetails Tournament[] 
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  isDeleted       Boolean         @default(false)
   @@map("gaming_details")
 }
 
@@ -30,7 +36,7 @@ model User {
   id              String          @id @unique @default(uuid())
   touranment      Tournament[]
   name            String
-  username        String
+  username        String          @unique
   email           String          @unique
   number          String?
   password        String
@@ -40,6 +46,7 @@ model User {
   hostingDetailId String?         @unique
   gamingDetails   GamingDetails?  @relation(fields: [gamingDetailId], references: [id])
   gamingDetailId  String?         @unique
+
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   isDeleted       Boolean         @default(false)
@@ -48,10 +55,12 @@ model User {
 }
 
 model Tournament {
-  id                    String   @id @unique @default(uuid())
-  host                  User     @relation(fields: [userId], references: [id])
-  hostingDetail         HostingDetails?
-  gamingDetail          GamingDetails?
+  id                    String         @id @unique @default(uuid())
+  host                  User           @relation(fields: [userId], references: [id])
+  hostingDetail         HostingDetails? @relation(fields: [hostedTournamentId], references: [id])
+  hostedTournamentId    String?
+  gamingDetail          GamingDetails?  @relation(fields: [gamingDetailId], references: [id])
+  gamingDetailId        String?
   userId                String
   tournamentName        String
   registrationStartDate DateTime
@@ -59,4 +68,9 @@ model Tournament {
   competitionStartDate  DateTime
   competitionEndDate    DateTime
   description           String
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  isDeleted       Boolean         @default(false)
+  @@map("tournaments")
 }

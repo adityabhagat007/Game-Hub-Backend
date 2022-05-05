@@ -34,7 +34,7 @@
   "keywords": [
     "the gaming hub"
   ],
-  "author": "Developer",
+  "author": "Codestars",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^3.13.0",
